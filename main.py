@@ -18,6 +18,8 @@ ship_image = 'assets/images/kapal.png'
 def screen_utama():
     player_x = int(lebar_screen / 5)
     player_y = int((tinggi_screen - game_image['nemo_image'].get_height()) / 2)
+    msgx = int((lebar_screen - game_image['message'].get_width()) / 2)
+    msgy = int(tinggi_screen * 0.2)
 
     base_x = 0
     while True:
@@ -33,6 +35,7 @@ def screen_utama():
             else:
                 display_screen.blit(game_image['background'], (0, 0))
                 display_screen.blit(game_image['nemo_image'], (player_x, player_y))
+                display_screen.blit(game_image['message'], (msgx, msgy))
                 display_screen.blit(game_image['base'], (base_x, base_position))
                 pygame.display.update()
                 time_clock.tick(FPS)
@@ -176,7 +179,7 @@ if __name__ == "__main__":
 
     pygame.init()
     time_clock = pygame.time.Clock()
-    pygame.display.set_caption('Nemo Game')
+    pygame.display.set_caption('Dodge The Ship Game')
     pygame.display.set_icon(pygame.image.load('assets/images/icon.png'))
     game_image['numbers'] = (
         pygame.image.load('assets/images/0.png').convert_alpha(),
@@ -191,7 +194,7 @@ if __name__ == "__main__":
         pygame.image.load('assets/images/9.png').convert_alpha(),
     )
 
-    game_image['message'] = pygame.image.load('assets/images/bg_screen.png').convert_alpha()
+    game_image['message'] = pygame.image.load('assets/images/intro_sm.png').convert_alpha()
     game_image['base'] = pygame.image.load('assets/images/base_cp.png').convert_alpha()
     game_image['ship'] = (pygame.image.load(ship_image).convert_alpha(),
                           pygame.image.load(ship_image).convert_alpha()
